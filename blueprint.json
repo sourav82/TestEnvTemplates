@@ -1,0 +1,127 @@
+{
+	"properties": {
+		"description": "Blueprint for creating Test environment resource group and its resources",
+		"targetScope": "subscription",
+		"parameters": {
+			"owners": {
+				"type": "array",
+				"metadata": {
+					"displayName": "Owner IDs",
+					"description": "RBAC assignment ids for owners",
+					"strongType": "PrincipalId"
+				}
+			},
+			"contributors": {
+				"type": "array",
+				"metadata": {
+					"displayName": "Contributor IDs",
+					"description": "RBAC assignment ids for contributors",
+					"strongType": "PrincipalId"
+				}
+			},
+			"readers": {
+				"type": "array",
+				"metadata": {
+					"displayName": "Reader IDs",
+					"description": "RBAC assignment ids for readers",
+					"strongType": "PrincipalId"
+				}
+			},
+			"nsgName": {
+				"defaultValue": "databricks-nsg",
+				"type": "string",
+				"metadata": {
+					"description": "The name of the network security group to create."
+				}
+			},
+			"vnetName": {
+				"defaultValue": "VNET-TEST-DATA",
+				"type": "string",
+				"metadata": {
+					"description": "The name of the virtual network to create."
+				}
+			},
+			"workspaceName": {
+				"type": "string",
+				"metadata": {
+					"description": "The name of the Azure Databricks workspace to create."
+				}
+			},
+			"privateSubnetName": {
+				"defaultValue": "private-subnet",
+				"type": "string",
+				"metadata": {
+					"description": "The name of the private subnet to create."
+				}
+			},
+			"publicSubnetName": {
+				"defaultValue": "public-subnet",
+				"type": "string",
+				"metadata": {
+					"description": "The name of the public subnet to create."
+				}
+			},
+			"pricingTier": {
+				"defaultValue": "premium",
+				"allowedValues": [
+					"trial",
+					"standard",
+					"premium"
+				],
+				"type": "string",
+				"metadata": {
+					"description": "The pricing tier of workspace."
+				}
+			},
+			"location": {
+				"type": "string",
+				"defaultValue": "uksouth",
+				"metadata": {
+					"description": "Location for all resources."
+				}
+			},
+			"vnetCidr": {
+				"defaultValue": "10.191.0.0/16",
+				"type": "string",
+				"metadata": {
+					"description": "Cidr range for the vnet."
+				}
+			},
+			"privateSubnetCidr": {
+				"defaultValue": "10.191.0.0/18",
+				"type": "string",
+				"metadata": {
+					"description": "Cidr range for the private subnet."
+				}
+			},
+			"publicSubnetCidr": {
+				"defaultValue": "10.191.64.0/18",
+				"type": "string",
+				"metadata": {
+					"description": "Cidr range for the public subnet.."
+				}
+			},
+			"resourceTags": {
+				"type": "object",
+				"defaultValue": {
+					"Environment-Type": "Test",
+					"Project": "Track"
+				}
+			},
+							"webAppName": {
+					"type": "string",
+					"metadata": {
+						"description": "That name is the name of our application. It has to be unique. Type a name followed by your resource group name. (<name>-<resourceGroupName>)"
+					}
+				}
+
+
+		},
+		"resourceGroups": {
+			"TestRG": {
+				"description": "Resource group for Test environment"
+			}
+		}
+	},
+	"type": "Microsoft.Blueprint/blueprints"
+}

@@ -1,0 +1,11 @@
+{
+    "kind": "roleAssignment",
+    "properties": {
+        "roleDefinitionId": "/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
+        "principalIds": "[parameters('readers')]",
+        "displayName": "<user or group TBD> : Reader",
+        "resourceGroup": "TestRG"
+    },
+    "type": "Microsoft.Blueprint/blueprints/artifacts",
+    "name": "rbacAssignmentReaders"
+}
